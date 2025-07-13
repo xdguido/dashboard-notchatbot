@@ -1,4 +1,5 @@
 import { defineSchema, defineTable } from "convex/server";
+
 import { v } from "convex/values";
 
 // The schema is entirely optional.
@@ -8,5 +9,10 @@ import { v } from "convex/values";
 export default defineSchema({
   numbers: defineTable({
     value: v.number(),
+  }),
+  orders: defineTable({
+    id: v.string(),
+    email: v.string(),
+    total_price: v.string(),
   }),
 });
