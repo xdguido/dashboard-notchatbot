@@ -56,6 +56,7 @@ export async function POST(req: NextRequest) {
           total_price: String(body.total_price),
           product,
           date: String(body.created_at),
+          status: "pending", // Set initial status for new orders
         });
       }
       break;
@@ -82,6 +83,7 @@ export async function POST(req: NextRequest) {
             total_price: String(body.total_price),
             product,
             date: String(body.created_at),
+            status: order.status || "updated", // Keep existing status or set as updated
           });
         }
       }

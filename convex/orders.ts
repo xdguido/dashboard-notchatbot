@@ -30,6 +30,7 @@ export const saveOrder = mutation({
     total_price: v.string(),
     product: v.string(),
     date: v.string(),
+    status: v.string(),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("orders", args);
@@ -45,6 +46,7 @@ export const editOrder = mutation({
     total_price: v.string(),
     product: v.string(),
     date: v.string(),
+    status: v.string(),
   },
   handler: async (ctx, args) => {
     const { _id, ...rest } = args;
