@@ -2,6 +2,18 @@ import { mutation, query } from "./_generated/server";
 
 import { v } from "convex/values";
 
+// Delete all orders (for cleanup)
+export const deleteAllOrders = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const orders = await ctx.db.query("orders").collect();
+    for (const order of orders) {
+      await ctx.db.delete(order._id);
+    }
+    return { deleted: orders.length };
+  },
+});
+
 // List all orders
 export const listOrders = query({
   args: {},
@@ -16,6 +28,8 @@ export const saveOrder = mutation({
     id: v.string(),
     email: v.string(),
     total_price: v.string(),
+    product: v.string(),
+    date: v.string(),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("orders", args);
@@ -29,6 +43,8 @@ export const editOrder = mutation({
     id: v.string(),
     email: v.string(),
     total_price: v.string(),
+    product: v.string(),
+    date: v.string(),
   },
   handler: async (ctx, args) => {
     const { _id, ...rest } = args;

@@ -38,25 +38,50 @@ export async function POST(req: NextRequest) {
 
   switch (topic) {
     case "orders/create": {
-      if (body && body.id && body.email && body.total_price) {
+      if (
+        body &&
+        body.id &&
+        body.email &&
+        body.total_price &&
+        body.line_items &&
+        body.created_at
+      ) {
+        // Concatenate product titles if multiple line items
+        const product = Array.isArray(body.line_items)
+          ? body.line_items.map((item: any) => item.title).join(", ")
+          : "";
         await fetchMutation(api.orders.saveOrder, {
           id: String(body.id),
           email: String(body.email),
           total_price: String(body.total_price),
+          product,
+          date: String(body.created_at),
         });
       }
       break;
     }
     case "orders/edited": {
-      if (body && body.id && body.email && body.total_price) {
+      if (
+        body &&
+        body.id &&
+        body.email &&
+        body.total_price &&
+        body.line_items &&
+        body.created_at
+      ) {
         const orders = await fetchQuery(api.orders.listOrders, {});
         const order = orders.find((o: any) => o.id === String(body.id));
         if (order) {
+          const product = Array.isArray(body.line_items)
+            ? body.line_items.map((item: any) => item.title).join(", ")
+            : "";
           await fetchMutation(api.orders.editOrder, {
             _id: order._id,
             id: String(body.id),
             email: String(body.email),
             total_price: String(body.total_price),
+            product,
+            date: String(body.created_at),
           });
         }
       }

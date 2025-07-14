@@ -14,5 +14,7 @@ export default defineSchema({
     id: v.string(),
     email: v.string(),
     total_price: v.string(),
+    product: v.optional(v.string()),
+    date: v.optional(v.string()),
   }),
 });
