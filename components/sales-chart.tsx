@@ -208,16 +208,8 @@ export default function RealTimeSalesChart() {
           >
             <defs>
               <linearGradient id="fillRevenue" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-revenue)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-revenue)"
-                  stopOpacity={0.1}
-                />
+                <stop offset="5%" stopColor="#22c55e" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#22c55e" stopOpacity={0.1} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -239,7 +231,7 @@ export default function RealTimeSalesChart() {
               dataKey="revenue"
               type="monotone"
               fill="url(#fillRevenue)"
-              stroke="var(--color-revenue)"
+              stroke="#22c55e"
               strokeWidth={2}
             />
           </AreaChart>

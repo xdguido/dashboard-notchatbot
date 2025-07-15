@@ -123,7 +123,7 @@ export default function LiveOrderFeed() {
                 className={cn(
                   "p-3 rounded-lg border transition-all duration-300",
                   newOrderIds.has(order.id)
-                    ? "bg-green-50 border-green-200 shadow-md scale-[1.02]"
+                    ? "border-green-500 shadow-md"
                     : "bg-card hover:bg-muted/50",
                 )}
               >

@@ -297,7 +297,7 @@ export default function OrdersTable() {
         </div>
       </CardHeader>
 
-      <CardContent className="p-0">
+      <CardContent className="px-3">
         <div className="border rounded-md">
           <Table>
             <TableHeader>
