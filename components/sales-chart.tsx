@@ -55,7 +55,7 @@ type Order = {
 export default function RealTimeSalesChart() {
   // Fetch orders from Convex
   const orders = useQuery(api.orders.listOrders, {}) as Order[] | undefined;
-  const [viewType, setViewType] = React.useState<"hourly" | "daily">("hourly");
+  const [viewType, setViewType] = React.useState<"hourly" | "daily">("daily");
   const [lastUpdate, setLastUpdate] = React.useState(new Date());
 
   // Process orders into chart data
