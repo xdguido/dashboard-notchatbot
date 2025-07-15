@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 import { NextRequest, NextResponse } from "next/server";
 import { fetchMutation, fetchQuery } from "convex/nextjs";
 
