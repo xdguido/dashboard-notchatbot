@@ -170,7 +170,7 @@ export default function LiveOrderFeed() {
                 </div>
 
                 {order.product && (
-                  <div className="mt-2 text-sm text-muted-foreground truncate">
+                  <div className="mt-2 text-sm text-muted-foreground">
                     {order.product}
                   </div>
                 )}
