@@ -1,0 +1,5 @@
+{"id": "order_1", "email": "alice@example.com", "total_price": "100.00", "status": "paid", "product": "T-shirt", "date": "2025-07-01"}
+{"id": "order_2", "email": "bob@example.com", "total_price": "59.99", "status": "pending", "product": "Mug", "date": "2025-07-10"}
+{"id": "order_3", "email": "carol@example.com", "total_price": "250.00", "status": "shipped", "product": "Hoodie", "date": "2025-07-12"}
+{"id": "order_4", "email": "dave@example.com", "total_price": "15.50", "status": "cancelled", "product": "Sticker", "date": "2025-07-13"}
+{"id": "order_5", "email": "eve@example.com", "total_price": "120.00", "status": "paid", "product": "Cap", "date": "2025-07-14"}
