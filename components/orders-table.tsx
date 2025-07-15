@@ -200,7 +200,6 @@ export default function OrdersTable() {
   const exportToCSV = () => {
     // Get column keys and headers
     const colDefs = columns.map((col) => {
-      // @ts-ignore
       return {
         key: (col as any).accessorKey,
         header:

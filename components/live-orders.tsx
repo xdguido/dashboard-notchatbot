@@ -13,7 +13,6 @@ import { Bell, Clock, DollarSign, User, Volume2, VolumeX } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
 import { useQuery } from "convex/react";
@@ -114,80 +113,78 @@ export default function LiveOrderFeed() {
           )}
         </Button>
       </CardHeader>
-      <CardContent className="p-0">
-        <ScrollArea className="h-[500px] px-6">
-          <div className="space-y-3">
-            {sortedOrders.map((order) => (
-              <div
-                key={order._id}
-                className={cn(
-                  "p-3 rounded-lg border transition-all duration-300",
-                  newOrderIds.has(order.id)
-                    ? "border-green-500 shadow-md"
-                    : "bg-card hover:bg-muted/50",
-                )}
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-medium">
-                        #{order.id.slice(-8)}
-                      </span>
-                      {newOrderIds.has(order.id) && (
-                        <Badge
-                          variant="secondary"
-                          className="text-xs animate-pulse"
-                        >
-                          NEW
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <User className="h-3 w-3" />
-                      <span>{order.email}</span>
-                    </div>
-                  </div>
-                  <Badge
-                    variant="outline"
-                    className={cn(
-                      "text-xs",
-                      statusColors[order.status ?? ""] || "",
+      <CardContent className="p-0 overflow-y-auto">
+        <div className="space-y-3 px-3">
+          {sortedOrders.map((order) => (
+            <div
+              key={order._id}
+              className={cn(
+                "p-3 rounded-lg border transition-all duration-300",
+                newOrderIds.has(order.id)
+                  ? "border-green-500 shadow-md"
+                  : "bg-card hover:bg-muted/50",
+              )}
+            >
+              <div className="flex items-start justify-between mb-2">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-sm font-medium">
+                      #{order.id.slice(-8)}
+                    </span>
+                    {newOrderIds.has(order.id) && (
+                      <Badge
+                        variant="secondary"
+                        className="text-xs animate-pulse"
+                      >
+                        NEW
+                      </Badge>
                     )}
-                  >
-                    {order.status}
-                  </Badge>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 text-lg font-semibold text-green-600">
-                    <DollarSign className="h-4 w-4" />
-                    {order.total_price}
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <Clock className="h-3 w-3" />
-                    {formatTime(order)}
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <User className="h-3 w-3" />
+                    <span>{order.email}</span>
                   </div>
                 </div>
-
-                {order.product && (
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    {order.product}
-                  </div>
-                )}
+                <Badge
+                  variant="outline"
+                  className={cn(
+                    "text-xs",
+                    statusColors[order.status ?? ""] || "",
+                  )}
+                >
+                  {order.status}
+                </Badge>
               </div>
-            ))}
 
-            {sortedOrders.length === 0 && (
-              <div className="text-center py-8 text-muted-foreground">
-                <Bell className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                <p>No orders yet</p>
-                <p className="text-sm">
-                  New orders will appear here in real-time
-                </p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1 text-lg font-semibold text-green-600">
+                  <DollarSign className="h-4 w-4" />
+                  {order.total_price}
+                </div>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Clock className="h-3 w-3" />
+                  {formatTime(order)}
+                </div>
               </div>
-            )}
-          </div>
-        </ScrollArea>
+
+              {order.product && (
+                <div className="mt-2 text-sm text-muted-foreground">
+                  {order.product}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {sortedOrders.length === 0 && (
+            <div className="text-center py-8 text-muted-foreground">
+              <Bell className="h-8 w-8 mx-auto mb-2 opacity-50" />
+              <p>No orders yet</p>
+              <p className="text-sm">
+                New orders will appear here in real-time
+              </p>
+            </div>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
