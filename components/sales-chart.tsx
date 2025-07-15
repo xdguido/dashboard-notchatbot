@@ -219,12 +219,14 @@ export default function RealTimeSalesChart() {
               axisLine={false}
               tickMargin={8}
               minTickGap={32}
+              tick={{ fill: "var(--text-color)" }}
             />
             <YAxis
               tickLine={false}
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => `$${value}`}
+              tick={{ fill: "var(--text-color)" }}
             />
             <ChartTooltip content={<CustomTooltip />} />
             <Area

@@ -3,11 +3,15 @@
 import LiveOrderFeed from "@/components/live-orders";
 import OrdersTable from "@/components/orders-table";
 import RealTimeSalesChart from "@/components/sales-chart";
+import { ShoppingBag } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen max-w-5xl mx-auto bg-background p-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Shopify Dashboard</h1>
+    <main className="min-h-screen max-w-7xl mx-auto bg-background p-8">
+      <h1 className="text-xl flex items-center font-semibold mb-8">
+        Shopify Dashboard
+        <ShoppingBag className="h-5 w-5 ml-2" />
+      </h1>
       <div
         className="grid grid-cols-1 lg:grid-cols-3 gap-4 auto-rows-[minmax(200px,auto)]"
         style={{ gridTemplateRows: "repeat(2, minmax(200px, auto))" }}
